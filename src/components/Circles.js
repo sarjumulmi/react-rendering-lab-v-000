@@ -5,7 +5,7 @@ class Circles extends React.Component {
 
   constructor(props) {
     super(props);
-    
+
     this.state = {
       circles: [
         { color: 'red' },
@@ -13,6 +13,10 @@ class Circles extends React.Component {
         { color: 'green' },
       ]
     };
+  }
+
+  shouldComponentUpdate(nextProps, nextState){
+    return nextState.circles.color!==this.state.circles.color
   }
 
   handleClick = () => {
@@ -26,8 +30,8 @@ class Circles extends React.Component {
   }
 
   render() {
-    const renderCircles = this.state.circles.map((circle, index) => 
-      <Circle color={circle.color} key={index} /> 
+    const renderCircles = this.state.circles.map((circle, index) =>
+      <Circle color={circle.color} key={index} />
     );
 
     return (
